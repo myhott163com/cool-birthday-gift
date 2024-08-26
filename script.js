@@ -111,22 +111,29 @@ document.addEventListener('DOMContentLoaded', () => {
     card.addEventListener('click', flipCardBack);
 
     function createBackgroundElements() {
-        createBalloons();
-        createConfetti();
-        createRobots();
-        createStars();
-        createBinaryCode();
+        const cardRect = card.getBoundingClientRect();
+        const cardCenterX = cardRect.left + cardRect.width / 2;
+        const cardCenterY = cardRect.top + cardRect.height / 2;
+        const safeDistance = Math.max(cardRect.width, cardRect.height) / 2 + 20; // 20px extra margin
+
+        createBalloons(cardCenterX, cardCenterY, safeDistance);
+        createConfetti(cardCenterX, cardCenterY, safeDistance);
+        createRobots(cardCenterX, cardCenterY, safeDistance);
+        createStars(cardCenterX, cardCenterY, safeDistance);
+        createBinaryCode(cardCenterX, cardCenterY, safeDistance);
     }
 
-    function createBalloons() {
+    function createBalloons(centerX, centerY, safeDistance) {
         const balloonsContainer = document.querySelector('.balloons');
         const balloonColors = ['#ff69b4', '#ff9a9e', '#fad0c4', '#a18cd1', '#fbc2eb'];
 
         for (let i = 0; i < 30; i++) {
             const balloon = document.createElement('div');
             balloon.classList.add('balloon');
-            balloon.style.left = `${Math.random() * 100}%`;
-            balloon.style.top = `${Math.random() * 100}%`;
+            const angle = Math.random() * Math.PI * 2;
+            const distance = safeDistance + Math.random() * 100;
+            balloon.style.left = `${centerX + Math.cos(angle) * distance}px`;
+            balloon.style.top = `${centerY + Math.sin(angle) * distance}px`;
             balloon.style.animationDelay = `${Math.random() * 15}s`;
             balloon.style.animationDuration = `${15 + Math.random() * 10}s`;
             balloon.style.backgroundColor = balloonColors[Math.floor(Math.random() * balloonColors.length)];
@@ -151,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function createRobots() {
+    function createRobots(centerX, centerY, safeDistance) {
         const robotsContainer = document.querySelector('.robots');
         const robotEmojis = ['🤖', '👾', '🎮', '💻', '📱', '🔬', '🧠', '🚀'];
 
@@ -159,34 +166,40 @@ document.addEventListener('DOMContentLoaded', () => {
             const robot = document.createElement('div');
             robot.classList.add('robot');
             robot.textContent = robotEmojis[Math.floor(Math.random() * robotEmojis.length)];
-            robot.style.left = `${Math.random() * 100}%`;
-            robot.style.top = `${Math.random() * 100}%`;
+            const angle = Math.random() * Math.PI * 2;
+            const distance = safeDistance + Math.random() * 100;
+            robot.style.left = `${centerX + Math.cos(angle) * distance}px`;
+            robot.style.top = `${centerY + Math.sin(angle) * distance}px`;
             robot.style.animationDelay = `${Math.random() * 5}s`;
             robot.style.fontSize = `${20 + Math.random() * 20}px`;
             robotsContainer.appendChild(robot);
         }
     }
 
-    function createStars() {
+    function createStars(centerX, centerY, safeDistance) {
         const starsContainer = document.querySelector('.stars');
         for (let i = 0; i < 50; i++) {
             const star = document.createElement('div');
             star.classList.add('star');
-            star.style.left = `${Math.random() * 100}%`;
-            star.style.top = `${Math.random() * 100}%`;
+            const angle = Math.random() * Math.PI * 2;
+            const distance = safeDistance + Math.random() * 100;
+            star.style.left = `${centerX + Math.cos(angle) * distance}px`;
+            star.style.top = `${centerY + Math.sin(angle) * distance}px`;
             star.style.animationDelay = `${Math.random() * 2}s`;
             starsContainer.appendChild(star);
         }
     }
 
-    function createBinaryCode() {
+    function createBinaryCode(centerX, centerY, safeDistance) {
         const binaryContainer = document.querySelector('.binary-code');
         for (let i = 0; i < 20; i++) {
             const binary = document.createElement('div');
             binary.classList.add('binary');
             binary.textContent = Math.random().toString(2).substr(2, 8);
-            binary.style.left = `${Math.random() * 100}%`;
-            binary.style.top = `${Math.random() * 100}%`;
+            const angle = Math.random() * Math.PI * 2;
+            const distance = safeDistance + Math.random() * 100;
+            binary.style.left = `${centerX + Math.cos(angle) * distance}px`;
+            binary.style.top = `${centerY + Math.sin(angle) * distance}px`;
             binary.style.animationDelay = `${Math.random() * 5}s`;
             binaryContainer.appendChild(binary);
         }
