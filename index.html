@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Fatemeh!</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="background-elements">
+        <div class="balloons"></div>
+        <div class="confetti"></div>
+        <div class="fireworks"></div>
+        <div class="robots"></div>
+        <div class="stars"></div>
+        <div class="binary-code"></div>
+    </div>
+    <div class="card">
+        <div class="card-front">
+            <h1 class="birthday-text">Happy Birthday, Fatemeh!</h1>
+            <div class="cat-container">
+                <div class="speech-bubble">Click me!</div>
+                <div class="cat-icon">😺</div>
+            </div>
+            <button class="open-card hidden">Open Gift!</button>
+            <div class="footer-text">made with ❤️🧠 for Fatemeh</div>
+        </div>
+        <div class="card-inside">
+            <div class="header">
+                <h2 class="gift-progress">1/3 away from gift!</h2>
+            </div>
+            <div class="question" id="question1">
+                <p class="formula">\[\int_0^2 (1.048x^2 - 0.462x + 3.195) dx\]</p>
+                <p class="instruction">Round to two decimal places</p>
+                <div class="input-container">
+                    <input type="number" id="integral-answer" placeholder="Enter your answer">
+                    <button id="check-answer" aria-label="Submit answer">Submit</button>
+                </div>
+                <p id="answer-feedback"></p>
+            </div>
+            <div class="question" id="question2" style="display: none;">
+                <h3>Which sentiment model might say "sure" just because it's tired?</h3>
+                <div class="options">
+                    <button class="option" data-option="A">A. Decoder</button>
+                    <button class="option" data-option="B">B. Naive Bayes</button>
+                    <button class="option" data-option="C">C. BERT</button>
+                    <button class="option" data-option="D">D. My sleepy DADDY</button>
+                </div>
+                <p id="question2-feedback"></p>
+            </div>
+            <div class="question" id="question3" style="display: none;">
+                <!-- Question 3 will be added here -->
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
